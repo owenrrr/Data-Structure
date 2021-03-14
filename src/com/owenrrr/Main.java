@@ -1,5 +1,6 @@
 package com.owenrrr;
 
+import com.owenrrr.Heap.Heap;
 import com.owenrrr.Tree.BinaryTree;
 
 import java.lang.reflect.Method;
@@ -11,17 +12,20 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // 排序算法
-//        List<Integer> list = Arrays.asList(1,5,3,6,8,9,4,10,-1);
-//        mergeSortEx(list);
-//        insertSortEx(list);
-//        switchSort(list);
+        mergeSortEx();
+        insertSortEx();
+        switchSort();
 
         // 树
         binaryTree();
 
+        // 堆
+        heaps();
     }
 
-    public static void mergeSortEx(List<Integer> list) throws Exception{
+    public static void mergeSortEx() throws Exception{
+        List<Integer> list = Arrays.asList(1,5,3,6,8,9,4,10,-1);
+
         List<Integer> result;
         Class mergeClass = Class.forName("com.owenrrr.Calculation.MergeSort");
         Object mergeOb = mergeClass.getConstructor().newInstance();
@@ -31,7 +35,9 @@ public class Main {
         printList(result);
     }
 
-    public static void insertSortEx(List<Integer> list) throws Exception {
+    public static void insertSortEx() throws Exception {
+        List<Integer> list = Arrays.asList(1,5,3,6,8,9,4,10,-1);
+
         List<Integer> result;
         Class clazz = Class.forName("com.owenrrr.Calculation.InsertSort");
         Object object = clazz.getConstructor().newInstance();
@@ -55,7 +61,9 @@ public class Main {
         printList(result);
     }
 
-    public static void switchSort(List<Integer> list) throws Exception{
+    public static void switchSort() throws Exception{
+        List<Integer> list = Arrays.asList(1,5,3,6,8,9,4,10,-1);
+
         List<Integer> result;
         Class clazz = Class.forName("com.owenrrr.Calculation.SwitchSort");
         Object object = clazz.getConstructor().newInstance();
@@ -85,6 +93,34 @@ public class Main {
         BinaryTree tree = new BinaryTree(node1);
         tree.cycle();
 
+    }
+
+    public static void heaps(){
+        Heap.Node node10 = new Heap.Node(4);
+        Heap.Node node9 = new Heap.Node(37);
+        Heap.Node node8 = new Heap.Node(1);
+        Heap.Node node7 = new Heap.Node(29);
+        Heap.Node node6 = new Heap.Node(12);
+        Heap.Node node5 = new Heap.Node(23, node10, null);
+        Heap.Node node4 = new Heap.Node(60, node8, node9);
+        Heap.Node node3 = new Heap.Node(71, node6, node7);
+        Heap.Node node2 = new Heap.Node(84, node4, node5);
+        Heap.Node node1 = new Heap.Node(100, node2, node3);
+
+        Heap.Node[] heaps = new Heap.Node[10];
+        heaps[0] = node4;
+        heaps[1] = node2;
+        heaps[2] = node3;
+        heaps[3] = node1;
+        heaps[4] = node10;
+        heaps[5] = node6;
+        heaps[6] = node8;
+        heaps[7] = node7;
+        heaps[8] = node9;
+        heaps[9] = node5;
+        Heap heap = new Heap(heaps, true);
+
+        heap.printHeaps();
     }
 
     public static void printList(List<Integer> list){

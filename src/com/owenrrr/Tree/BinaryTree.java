@@ -23,12 +23,16 @@ public class BinaryTree {
     }
 
     public void cycle(){
+        System.out.print("perOrder: ");
         preOrder(this.root);
         System.out.println();
+        System.out.print("inOrder: ");
         inOrder(this.root);
         System.out.println();
+        System.out.print("postOrder: ");
         postOrder(this.root);
         System.out.println();
+        System.out.print("Level Order: ");
         levelOrder(this.root);
         System.out.println();
     }
